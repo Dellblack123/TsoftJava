@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/PrimeraClase/PrimeraClase.iml" filepath="$PROJECT_DIR$/PrimeraClase/PrimeraClase.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TareaCA/TareaCA.iml" filepath="$PROJECT_DIR$/TareaCA/TareaCA.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/TsoftJava.iml" filepath="$PROJECT_DIR$/.idea/TsoftJava.iml" />
+    </modules>
+  </component>
+</project>
