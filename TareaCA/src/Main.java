@@ -13,7 +13,7 @@ public class Main {
         Scanner x = new Scanner(System.in);
         int n=0;//Numero de alumnos
         do{
-            System.out.println("Contigo Aprendo");
+            System.out.println("==Contigo Aprendo==");
             System.out.println("1. Registrar un alumno");
             System.out.println("2. Calcular la peor nota");
             System.out.println("3. Calcular la mejor nota");
