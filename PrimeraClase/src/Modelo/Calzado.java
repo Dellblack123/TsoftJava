@@ -44,4 +44,35 @@ public class Calzado extends Producto implements Calculos {
         }
     }
 
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public int getDia_venta() {
+        return dia_venta;
+    }
+
+    public void setDia_venta(int dia_venta) {
+        this.dia_venta = dia_venta;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    public int getTipo_material() {
+        return tipo_material;
+    }
+
+    public void setTipo_material(int tipo_material) {
+        this.tipo_material = tipo_material;
+    }
 }

@@ -11,22 +11,12 @@ static ArrayList<Object> lista = new ArrayList();//Lista de deportivos,formales-
     static Mujer mun = new Mujer();
     static Hombre hom = new Hombre();
 
-    public static void agregarLista(){
-        Formal f = new Formal();
-        f.setCal(new Calzado());
-        mun.setForm(f);
-        hom.setForm(f);
-        hom.setColor("Rojo");
-        mun.setNumero(28);
-        hom.setNumero(32);
-        lista.add(mun);
-        lista.add(hom);
-    }
+
 
     public static void main(String[] args) {
         //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
         // to see how IntelliJ IDEA suggests fixing it.
-        agregarLista();
+
 
         int n = 1;//Entrada
         Scanner x = new Scanner(System.in);
@@ -59,6 +49,7 @@ static ArrayList<Object> lista = new ArrayList();//Lista de deportivos,formales-
 
     public static void opcion1(Scanner x){
         int n = 0;
+        int elec=0;
         do{
             System.out.println("Sistema");
 
@@ -66,9 +57,51 @@ static ArrayList<Object> lista = new ArrayList();//Lista de deportivos,formales-
             System.out.println("2. Calzado Mujer");
             System.out.println("3. Calzado Deportivo");
             System.out.println("4. Atrás");
-
             n = x.nextInt();
-            if(n>4) System.out.println("Opcion no valida");
+            if(n>4 || n<=0){System.out.println("Opcion no valida");
+            }else{
+                Calzado cal = new Calzado();
+                Formal form = new Formal();
+                cal.setTipo("Formal");
+                System.out.println("Seleccione el dia de venta");
+                System.out.println("1. Dia de semana");
+                System.out.println("2. Fin de semana");
+                elec = x.nextInt();
+                cal.setDia_venta(elec);
+                System.out.println("Talla de calzado");
+                cal.setNumero(x.nextInt());
+                System.out.println("Tipo de material");
+                System.out.println("1. Cuero");
+                System.out.println("2. Lona");
+                elec=x.nextInt();
+                System.out.println("Ingrese stock del calzado");
+                cal.setStock(x.nextInt());
+                System.out.println("Valor base del producto");
+                cal.setValor_base(x.nextDouble());
+                cal.setCodigo("CAL-Z"+lista.size()+1);
+                if (n==1){
+                    form.setCal(cal);
+                    Hombre hom = new Hombre();
+                    hom.setForm(form);
+                    System.out.println("Ingrese color");
+                    hom.setColor(x.next());
+                    lista.add(hom);
+                }else if(n==2){
+                    form.setCal(cal);
+                    Mujer mun = new Mujer();
+                    mun.setForm(form);
+                    System.out.println("Ingrese altura taco");
+                    mun.setAltura_taco(x.nextInt());
+                    lista.add(mun);
+                }else if(n==3){
+                    Deportivo dep = new Deportivo();
+                    dep.setCal(cal);
+                    System.out.println("Ingrese tipo de deporte");
+                    dep.setTipo_deporte(x.next());
+                    lista.add(dep);
+                }
+                break;
+            }
         }while(n!=4);
     }
 
@@ -93,15 +126,15 @@ static ArrayList<Object> lista = new ArrayList();//Lista de deportivos,formales-
         int n=0;
         int total = lista.size()+1;
         do{
-            System.out.println("Seleccione alguno para ver su valor");
+            System.out.println("Valores de calzados");
 
             for (int i=0; i<lista.size();i++){
                 if(lista.get(i) instanceof Mujer){
-                    System.out.println((i+1)+". Valor venta:"+((Mujer) lista.get(i)).getForm().getCal().valorVenta()+" Número calzado: "+((Mujer) lista.get(i)).getNumero());
+                    System.out.println((i+1)+". Valor venta:"+((Mujer) lista.get(i)).getForm().getCal().valorVenta()+" Número calzado: "+((Mujer) lista.get(i)).getForm().getCal().getNumero());
                 }else if(lista.get(i) instanceof Hombre){
-                    System.out.println((i+1)+". Valor venta:"+((Hombre) lista.get(i)).getForm().getCal().valorVenta()+" Número calzado: "+((Hombre) lista.get(i)).getNumero());
+                    System.out.println((i+1)+". Valor venta:"+((Hombre) lista.get(i)).getForm().getCal().valorVenta()+" Número calzado: "+((Hombre) lista.get(i)).getForm().getCal().getNumero());
                 }else if(lista.get(i) instanceof Deportivo){
-                    System.out.println((i+1)+". Valor venta:"+((Deportivo) lista.get(i)).getCal().valorVenta()+" Número calzado: "+((Deportivo) lista.get(i)).getNumero());
+                    System.out.println((i+1)+". Valor venta:"+((Deportivo) lista.get(i)).getCal().valorVenta()+" Número calzado: "+((Deportivo) lista.get(i)).getCal().getNumero());
                 }
             }
             System.out.println(total+". Atrás");

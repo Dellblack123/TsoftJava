@@ -1,8 +1,6 @@
 package Modelo;
 
 public class Hombre implements Descuento{
-    private int numero;//Medida calzado
-    private int dia_venta;
     private String color;
     private Formal form;
 
@@ -33,22 +31,6 @@ public class Hombre implements Descuento{
     public String toString() {
         return "Hombre{" +
                 '}';
-    }
-
-    public int getNumero() {
-        return numero;
-    }
-
-    public void setNumero(int numero) {
-        this.numero = numero;
-    }
-
-    public int getDia_venta() {
-        return dia_venta;
-    }
-
-    public void setDia_venta(int dia_venta) {
-        this.dia_venta = dia_venta;
     }
 
     public String getColor() {

@@ -1,10 +1,7 @@
 package Modelo;
 
 public class Mujer implements Descuento{
-    private int numero;//Medida calzado
     private int altura_taco;
-    private int dia_venta;
-    private String color;
 
     private Formal form;
 
@@ -37,20 +34,11 @@ public class Mujer implements Descuento{
     @Override
     public String toString() {
         return "Mujer{" +
-                " Dia de venta: "+dia_venta+
+                " Dia de venta: "+
                 " Altura de taco "+altura_taco+
                 " Descuento: "+descuento()+
                 '}';
     }
-
-    public int getNumero() {
-        return numero;
-    }
-
-    public void setNumero(int numero) {
-        this.numero = numero;
-    }
-
     public int getAltura_taco() {
         return altura_taco;
     }
@@ -59,21 +47,6 @@ public class Mujer implements Descuento{
         this.altura_taco = altura_taco;
     }
 
-    public int getDia_venta() {
-        return dia_venta;
-    }
-
-    public void setDia_venta(int dia_venta) {
-        this.dia_venta = dia_venta;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
 
     public Formal getForm() {
         return form;

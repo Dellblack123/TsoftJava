@@ -1,8 +1,6 @@
 package Modelo;
 
 public class Deportivo {
-
-    private int numero;//Medida calzado
     private String tipo_deporte;
 
     private Calzado cal;
@@ -27,11 +25,4 @@ public class Deportivo {
         this.cal = cal;
     }
 
-    public int getNumero() {
-        return numero;
-    }
-
-    public void setNumero(int numero) {
-        this.numero = numero;
-    }
 }
