@@ -3,7 +3,7 @@ package modelo;
 public class Hotel extends Hospederia{
     private boolean conDesayuno;
 
-    public Hotel(Cliente datCliente, int cantNoches, int tipoTemporada, double valNoche, int capacidad, boolean fumador, boolean conDesayuno) {
+    public Hotel(Cliente datCliente, int cantNoches, String tipoTemporada, double valNoche, int capacidad, boolean fumador, boolean conDesayuno) {
         super(datCliente, cantNoches, tipoTemporada, valNoche, capacidad, fumador);
         this.conDesayuno = conDesayuno;
     }
@@ -15,6 +15,7 @@ public class Hotel extends Hospederia{
     public void setConDesayuno(boolean conDesayuno) {
         this.conDesayuno = conDesayuno;
     }
+
 
     @Override
     public double adicional() {
@@ -36,7 +37,6 @@ public class Hotel extends Hospederia{
                 ", cantNoches=" + cantNoches +
                 ", tipoTemporada=" + tipoTemporada +
                 ", valor base noche=" + valNoche +
-                ", incremento al valor base: "+incrementarValorBase() +
                 ", sub-Total: "+subTotal() +
                 ", bono descuento: "+bonoDescuento() +
                 ", valor adicional: "+adicional() +

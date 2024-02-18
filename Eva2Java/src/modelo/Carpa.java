@@ -3,7 +3,7 @@ package modelo;
 public class Carpa extends MedioAlojamiento{
     private int cantPersonas;
 
-    public Carpa(Cliente datCliente, int cantNoches, int tipoTemporada, double valNoche, int cantPersonas) {
+    public Carpa(Cliente datCliente, int cantNoches, String tipoTemporada, double valNoche, int cantPersonas) {
         super(datCliente, cantNoches, tipoTemporada, valNoche);
         this.cantPersonas = cantPersonas;
     }

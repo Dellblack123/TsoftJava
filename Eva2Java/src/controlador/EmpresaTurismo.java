@@ -1,94 +1,104 @@
 package controlador;
 
-import modelo.Cabagna;
-import modelo.Carpa;
-import modelo.Hotel;
-import modelo.MedioAlojamiento;
+import modelo.*;
 
 import java.util.ArrayList;
 
 public class EmpresaTurismo {
-    private ArrayList<MedioAlojamiento> empresa;
+    private ArrayList<MedioAlojamiento> alojamientos;
 
-    public EmpresaTurismo(ArrayList<MedioAlojamiento> empresa) {
-        this.empresa = empresa;
+    public EmpresaTurismo(ArrayList<MedioAlojamiento> alojamientos) {
+        this.alojamientos = alojamientos;
     }
 
-    public ArrayList<MedioAlojamiento> getEmpresa() {
-        return empresa;
+    public ArrayList<MedioAlojamiento> getAlojamientos() {
+        return alojamientos;
     }
 
-    public void setEmpresa(ArrayList<MedioAlojamiento> empresa) {
-        this.empresa = empresa;
+    public void setAlojamientos(ArrayList<MedioAlojamiento> alojamientos) {
+        this.alojamientos = alojamientos;
     }
 
     public int buscarAlojamiento(String rutCliente){
 
-        for(int i=0; i<empresa.size(); i++){
-            if (empresa.get(i).getDatCliente().getRutCliente().compareToIgnoreCase(rutCliente)==0){
+        for(int i=0; i<alojamientos.size(); i++){
+            if (alojamientos.get(i).getDatCliente().getRutCliente().compareToIgnoreCase(rutCliente)==0){
                 return i;
             }
         }
         return -1;
     }
 
-    public void buscarCliente(String rutCliente){
+    public int buscarCliente(String rutCliente){
 
-        for(int i=0; i<empresa.size(); i++){
-            if (empresa.get(i).getDatCliente().getRutCliente().compareToIgnoreCase(rutCliente)==0){
-                System.out.println("Cliente encontrado:");
-                System.out.println(empresa.get(i).toString());;
-                return;
+        for(int i=0; i<alojamientos.size(); i++){
+            if (alojamientos.get(i).getDatCliente().getRutCliente().compareToIgnoreCase(rutCliente)==0){
+                //System.out.println("Cliente encontrado:");
+                //System.out.println(alojamientos.get(i).toString());;
+                return i;
             }
         }
-        System.out.println("Cliente no existe");
+        //System.out.println("Cliente no existe");
+        return -1;
     }
 
     public void ingresarAloCabagna(Cabagna cabagna){//Alojamiento cabaña
         if (buscarAlojamiento(cabagna.getDatCliente().getRutCliente())==-1){
-            empresa.add(cabagna);
+            alojamientos.add(cabagna);
         }
     }
 
     public void ingresarAloCarpa(Carpa carpa){//Alojamiento carpa
         if (buscarAlojamiento(carpa.getDatCliente().getRutCliente())==-1){
-            empresa.add(carpa);
+            alojamientos.add(carpa);
         }
     }
 
     public void ingresarAloHotel(Hotel hotel){//Alojamiento hotel
         if (buscarAlojamiento(hotel.getDatCliente().getRutCliente())==-1){
-            empresa.add(hotel);
+            alojamientos.add(hotel);
         }
     }
 
     public void mostrarAlojamientos(){
         System.out.println("===========Medios de Alojamiento===========");
-        for (int i=0;i<empresa.size();i++){
-            System.out.println(empresa.get(i).toString());
+        if (!alojamientos.isEmpty()){
+            for (int i=0;i<alojamientos.size();i++){
+                System.out.println(alojamientos.get(i).toString());
+            }
         }
+        System.out.println(alojamientos.size());
     }
 
     public void totalAdicional(){
         double acum=0;
-        for (int i=0;i<empresa.size();i++){
-            acum += empresa.get(i).adicional();
+        for (int i=0;i<alojamientos.size();i++){
+            acum += alojamientos.get(i).adicional();
         }
         System.out.println("El total adicional acumulado es: "+acum);
     }
 
     public void totalDescuento(){
         double acum=0;
-        for (int i=0;i<empresa.size();i++){
-            acum += empresa.get(i).bonoDescuento();
+        for (int i=0;i<alojamientos.size();i++){
+            acum += alojamientos.get(i).bonoDescuento();
         }
         System.out.println("El total bono descuento acumulado es: "+acum);
     }
 
-    public double cantidadCabagna(){
+    public int conteoTipoAlojamiento(int tipo){
+        return switch (tipo) {
+            case 1 -> cantidadCarpa();
+            case 2 -> cantidadCabagna();
+            case 3 -> cantidadHotel();
+            default -> -1;
+        };
+    }
+
+    public int cantidadCabagna(){
         int cont = 0;
-        for (int i=0;i<empresa.size();i++){
-            if (empresa.get(i) instanceof  Cabagna){
+        for (int i=0;i<alojamientos.size();i++){
+            if (alojamientos.get(i) instanceof  Cabagna){
                 cont++;
             }
         }
@@ -96,10 +106,10 @@ public class EmpresaTurismo {
         return cont;
     }
 
-    public double cantidadCarpa(){
+    public int cantidadCarpa(){
         int cont = 0;
-        for (int i=0;i<empresa.size();i++){
-            if (empresa.get(i) instanceof  Carpa){
+        for (int i=0;i<alojamientos.size();i++){
+            if (alojamientos.get(i) instanceof  Carpa){
                 cont++;
             }
         }
@@ -107,14 +117,15 @@ public class EmpresaTurismo {
         return cont;
     }
 
-    public double cantidadHotel(){
+    public int cantidadHotel(){
         int cont = 0;
-        for (int i=0;i<empresa.size();i++){
-            if (empresa.get(i) instanceof  Hotel){
+        for (int i=0;i<alojamientos.size();i++){
+            if (alojamientos.get(i) instanceof  Hotel){
                 cont++;
             }
         }
         System.out.println(cont);
         return cont;
     }
+
 }

@@ -14,9 +14,9 @@ public class App_Pruebas {
         Cliente cliente2 = new Cliente("Javier","2");
         Cliente cliente3 = new Cliente("Javier","3");
 
-        Cabagna cabagna = new Cabagna(cliente,3,1,250.0,6,true,false);
-        Carpa carpa = new Carpa(cliente2,2,2,75.50,3);
-        Hotel hotel = new Hotel(cliente3,8,0,550.0,6,true,true);
+        Cabagna cabagna = new Cabagna(cliente,3,"Media",250.0,6,true,false);
+        Carpa carpa = new Carpa(cliente2,2,"Baja",75.50,3);
+        Hotel hotel = new Hotel(cliente3,8,"Alta",550.0,6,true,true);
 
         EmpresaTurismo turismo = new EmpresaTurismo(new ArrayList<>());
 

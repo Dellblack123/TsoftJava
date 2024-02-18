@@ -4,10 +4,10 @@ public abstract class MedioAlojamiento extends Object{
 
     protected Cliente datCliente;//Datos del cliente
     protected int cantNoches;//Cantidad de noches
-    protected int tipoTemporada;//Alta -0, Media - 1, Baja - 2
+    protected String tipoTemporada;//Alta -0, Media - 1, Baja - 2
     protected double valNoche;//Valor base por noche
 
-    public MedioAlojamiento(Cliente datCliente, int cantNoches, int tipoTemporada, double valNoche) {
+    public MedioAlojamiento(Cliente datCliente, int cantNoches, String tipoTemporada, double valNoche) {
         this.datCliente = datCliente;
         this.cantNoches = cantNoches;
         this.tipoTemporada = tipoTemporada;
@@ -30,11 +30,11 @@ public abstract class MedioAlojamiento extends Object{
         this.cantNoches = cantNoches;
     }
 
-    public int getTipoTemporada() {
+    public String getTipoTemporada() {
         return tipoTemporada;
     }
 
-    public void setTipoTemporada(int tipoTemporada) {
+    public void setTipoTemporada(String tipoTemporada) {
         this.tipoTemporada = tipoTemporada;
     }
 
@@ -48,7 +48,7 @@ public abstract class MedioAlojamiento extends Object{
 
     public abstract double subTotal();
 
-    public double bonoDescuento(){return (getTipoTemporada()==2)?subTotal()*0.25:(getTipoTemporada()==1)?subTotal()*0.125:0;}
+    public double bonoDescuento(){return (getTipoTemporada().compareToIgnoreCase("Baja")==0)?subTotal()*0.25:(getTipoTemporada().compareToIgnoreCase("Media")==0)?subTotal()*0.125:0;}
 
     public abstract double valorCancelar();
 

@@ -5,10 +5,14 @@ public abstract class Hospederia extends MedioAlojamiento{
     protected boolean fumador;
     private boolean aumentado=false;
 
-    public Hospederia(Cliente datCliente, int cantNoches, int tipoTemporada, double valNoche, int capacidad, boolean fumador) {
+    public Hospederia(Cliente datCliente, int cantNoches, String tipoTemporada, double valNoche, int capacidad, boolean fumador) {
         super(datCliente, cantNoches, tipoTemporada, valNoche);
         this.capacidad = capacidad;
         this.fumador = fumador;
+
+        if(getCapacidad()<=5 && getCapacidad()>0){
+            setAumentado(true);
+        }
     }
 
     public int getCapacidad() {
@@ -36,7 +40,6 @@ public abstract class Hospederia extends MedioAlojamiento{
     }
     @Override
     public double subTotal() {
-        incrementarValorBase();
         return getCantNoches()*getValNoche();
     }
 
@@ -46,12 +49,14 @@ public abstract class Hospederia extends MedioAlojamiento{
             incremento=getValNoche()+getValNoche()*0.18;
             setValNoche(incremento);
             setAumentado(true);
-            return incremento;
         }
         return 0;
     }
     @Override
     public double adicional() {
         return 0;
+    }
+    public void recalculo(){
+        subTotal();
     }
 }
