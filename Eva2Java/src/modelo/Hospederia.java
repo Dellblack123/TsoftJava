@@ -1,4 +1,4 @@
-package Modelo;
+package modelo;
 
 public abstract class Hospederia extends MedioAlojamiento{
     protected int capacidad;
@@ -7,7 +7,6 @@ public abstract class Hospederia extends MedioAlojamiento{
 
     public Hospederia(Cliente datCliente, int cantNoches, int tipoTemporada, double valNoche, int capacidad, boolean fumador) {
         super(datCliente, cantNoches, tipoTemporada, valNoche);
-        incrementarValorBase();
         this.capacidad = capacidad;
         this.fumador = fumador;
     }
@@ -35,12 +34,21 @@ public abstract class Hospederia extends MedioAlojamiento{
     public void setAumentado(boolean aumentado) {
         this.aumentado = aumentado;
     }
+    @Override
+    public double subTotal() {
+        incrementarValorBase();
+        return getCantNoches()*getValNoche();
+    }
 
-    public void incrementarValorBase() {
+    public double incrementarValorBase() {
+        double incremento=0;
         if (getCapacidad()>5 && !isAumentado()){
-            setValNoche(getValNoche()+getValNoche()*0.18);
+            incremento=getValNoche()+getValNoche()*0.18;
+            setValNoche(incremento);
             setAumentado(true);
+            return incremento;
         }
+        return 0;
     }
     @Override
     public double adicional() {

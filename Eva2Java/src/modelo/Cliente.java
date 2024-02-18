@@ -1,4 +1,4 @@
-package Modelo;
+package modelo;
 
 public class Cliente {
     private String nombre;
@@ -23,5 +23,12 @@ public class Cliente {
 
     public void setRutCliente(String rutCliente) {
         this.rutCliente = rutCliente;
+    }
+
+    @Override
+    public String toString() {
+        return "Asociado al Cliente{" +
+                "nombre='" + nombre +
+                ", rutCliente='" + rutCliente+"} ";
     }
 }

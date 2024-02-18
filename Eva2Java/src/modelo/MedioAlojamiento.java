@@ -1,6 +1,7 @@
-package Modelo;
+package modelo;
 
 public abstract class MedioAlojamiento extends Object{
+
     protected Cliente datCliente;//Datos del cliente
     protected int cantNoches;//Cantidad de noches
     protected int tipoTemporada;//Alta -0, Media - 1, Baja - 2
@@ -45,9 +46,7 @@ public abstract class MedioAlojamiento extends Object{
         this.valNoche = valNoche;
     }
 
-    public double subTotal() {
-        return getCantNoches()*getValNoche();
-    }
+    public abstract double subTotal();
 
     public double bonoDescuento(){return (getTipoTemporada()==2)?subTotal()*0.25:(getTipoTemporada()==1)?subTotal()*0.125:0;}
 
